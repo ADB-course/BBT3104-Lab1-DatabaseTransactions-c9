@@ -10,5 +10,25 @@
 ## Flowchart
 
 ## Pseudocode
+START TRANSACTION
+
+SET @orderNUMBER = MAX(orderNUMBER) + 1 FROM orders
+
+INSERT INTO orders (@orderNUMBER, currentDate, requiredDate, shippedDate, status, customerNumber)
+SAVEPOINT before_product_1
+
+INSERT INTO orderdetails (orderNumber, productCode, quantityOrdered, priceEach, orderlineNumber)
+UPDATE products SET quantityInStock = quantityInStock - orderedQuantity
+
+SAVEPOINT before_product_2
+INSERT product_2
+IF error THEN
+ ROLLBACK TO SAVEPOINT before_product_2
+ENDIF
+
+INSERT remaining products
+RECEIVE payment from customer
+
+COMMIT 
 
 ## Support for the Sales Departments' Report
