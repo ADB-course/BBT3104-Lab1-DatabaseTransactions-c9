@@ -29,6 +29,6 @@ ENDIF
 INSERT remaining products
 RECEIVE payment from customer
 
-COMMIT 
+COMMIT TRANSACTION
 
 ## Support for the Sales Departments' Report
